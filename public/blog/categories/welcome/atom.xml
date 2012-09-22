@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Karlo's labs]]></title>
-  <link href="http://karlotcha.herokuapp.com//atom.xml" rel="self"/>
+  <title><![CDATA[Category: welcome | Karlo's labs]]></title>
+  <link href="http://karlotcha.herokuapp.com//blog/categories/welcome/atom.xml" rel="self"/>
   <link href="http://karlotcha.herokuapp.com//"/>
   <updated>2012-09-22T20:04:23+01:00</updated>
   <id>http://karlotcha.herokuapp.com//</id>
@@ -19,7 +19,7 @@
     <updated>2012-09-21T22:16:00+01:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2012/09/21/welcome</id>
     <content type="html"><![CDATA[<p>Welcome adventurer! This is my blog, I post some stuff here.
-Not sure about what you will find here&#8230; Have fun!</p>
+Not sure about what you will find here... Have fun!</p>
 ]]></content>
   </entry>
   
