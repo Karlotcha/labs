@@ -4,7 +4,7 @@
   <title><![CDATA[Karlo's labs]]></title>
   <link href="http://karlotcha.herokuapp.com//atom.xml" rel="self"/>
   <link href="http://karlotcha.herokuapp.com//"/>
-  <updated>2012-09-22T20:19:44+01:00</updated>
+  <updated>2012-09-25T22:12:14+01:00</updated>
   <id>http://karlotcha.herokuapp.com//</id>
   <author>
     <name><![CDATA[Karlotcha Hoa]]></name>
@@ -12,6 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[My Very First Particules]]></title>
+    <link href="http://karlotcha.herokuapp.com//blog/2012/09/25/my-very-first-particules/"/>
+    <updated>2012-09-25T00:00:00+01:00</updated>
+    <id>http://karlotcha.herokuapp.com//blog/2012/09/25/my-very-first-particules</id>
+    <content type="html"><![CDATA[<!--
+layout: post
+title: "my very first particules"
+date: 2012-09-25 22:11
+comments: true
+categories: 
+-->
+
+Test
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Welcome!]]></title>
