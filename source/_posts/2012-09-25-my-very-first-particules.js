@@ -1,24 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+---
+layout: post
+title: "my very first particules"
+date: 2012-09-25 22:11
+comments: true
+categories: 
+---
 
-  <title><![CDATA[Karlo's labs]]></title>
-  <link href="http://karlotcha.herokuapp.com//atom.xml" rel="self"/>
-  <link href="http://karlotcha.herokuapp.com//"/>
-  <updated>2012-09-25T23:52:23+01:00</updated>
-  <id>http://karlotcha.herokuapp.com//</id>
-  <author>
-    <name><![CDATA[Karlotcha Hoa]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
-
-  
-  <entry>
-    <title type="html"><![CDATA[my very first particules]]></title>
-    <link href="http://karlotcha.herokuapp.com//blog/2012/09/25/my-very-first-particules/"/>
-    <updated>2012-09-25T22:11:00+01:00</updated>
-    <id>http://karlotcha.herokuapp.com//blog/2012/09/25/my-very-first-particules</id>
-    <content type="html"><![CDATA[<!-- more -->
+<!-- more -->
 
 // ************************************************************************************
 // POINT CLASS
@@ -89,17 +77,3 @@ for (var i =0; i<4000; i++) {
 d3.timer(function() {
 	Point.list.forEach(function(thiz, i){thiz.move(speeds[i], distances[i])})
 });
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Welcome!]]></title>
-    <link href="http://karlotcha.herokuapp.com//blog/2012/09/21/welcome/"/>
-    <updated>2012-09-21T22:16:00+01:00</updated>
-    <id>http://karlotcha.herokuapp.com//blog/2012/09/21/welcome</id>
-    <content type="html"><![CDATA[<p>Welcome adventurer! This is my blog, I post some stuff here.
-Not sure about what you will find here... Have fun!</p>
-]]></content>
-  </entry>
-  
-</feed>
