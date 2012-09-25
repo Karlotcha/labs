@@ -1,3 +1,4 @@
+{% if index %}
 {% unless page.no_header %}
   <header>
     {% if index %}
@@ -5,7 +6,6 @@
     {% endif %}
   </header>
 {% endunless %}
-{% if index %}
   <div class="entry-content">{{ content | excerpt }}</div>
   {% capture excerpted %}{{ content | has_excerpt }}{% endcapture %}
   {% if excerpted == 'true' %}
