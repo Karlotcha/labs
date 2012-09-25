@@ -9,8 +9,7 @@
   <meta name="author" content="Karlotcha Hoa">
 
   
-  <meta name="description" content="// ************************************************************************************
-// POINT CLASS &hellip;">
+  <meta name="description" content="">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,88 +81,75 @@
   
   
     <article>
-      <!-- more -->
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/25/my-very-first-particules/">My Very First Particules</a></h1>
+    
+    
+      <p class="meta">
+        
 
-// ************************************************************************************
-// POINT CLASS
-// ************************************************************************************
-function Point (cx, cy) {
-	this.svg  = main_svg.append("svg:circle")
-						.attr('cx', cx)
-						.attr('cy', cy)
-						.attr('r' , 1)	
-						
-	if (rand(2)==0)	this.svg.attr('fill' , 'grey')	
-	else			this.svg.attr('fill' , 'blue')	
-	
-	this.x0 = cx
-	this.y0 = cy
-	
-	this.x = cx
-	this.y = cy
-						
-	Point.list.push(this)
-}
 
-Point.prototype.move 	= function (v, l) {
-	var elapsed = Date.now() - start
-	  , l = l || 3000
-	
-	this.svg.attr("transform", function(d) { return "translate(" + (elapsed/v)%l + ")"; })
-	
-	this.x = this.x0 + (elapsed/v)%l
-	this.y = this.y0 + (elapsed/v)%l
-}
 
-Point.prototype.d 		= function (point) {
-	return Math.sqrt(Math.pow(this.x - point.x, 2) + Math.pow(this.y - point.y, 2))
-}
-// ************************************************************************************
-// POINT CLASS - STATIC METHODS & ATTRIBUTES
-// ************************************************************************************
 
-Point.list = []
 
-// ************************************************************************************
-// GLOBAL VARIABLES
-// ************************************************************************************
-var main_svg 	= d3.select("body").append("svg:svg")
-  , start 		= Date.now()
 
-// ************************************************************************************
-// FUNCTIONS HELPERS
-// ************************************************************************************
-  , rand = function (n) {
-		return Math.floor(Math.random()*n)
-    }
+
+
   
-// ************************************************************************************
-// MAIN SCRIPT
-// ************************************************************************************
-var speeds  	= []
-  , distances	= []
-
-for (var i =0; i<4000; i++) {
-	speeds.push(rand(20)+1)
-	distances.push(rand(2000)+1000)
-	new Point(rand(800)-800, rand(800))
-}
 
 
-d3.timer(function() {
-	Point.list.forEach(function(thiz, i){thiz.move(speeds[i], distances[i])})
-});
+<time datetime="2012-09-25T22:11:00+01:00" pubdate data-updated="true">Sep 25<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
 
 
+  <div class="entry-content"></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/09/25/my-very-first-particules/">Read on &rarr;</a>
+    </footer>
+  
 
     </article>
   
   
     <article>
-      <p>Welcome adventurer! This is my blog, I post some stuff here.
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/21/welcome/">Welcome!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-21T22:16:00+01:00" pubdate data-updated="true">Sep 21<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Welcome adventurer! This is my blog, I post some stuff here.
 Not sure about what you will find here... Have fun!</p>
-
-
+</div>
+  
+  
 
     </article>
   
