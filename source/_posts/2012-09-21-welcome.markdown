@@ -6,4 +6,4 @@ comments: true
 categories: welcome
 ---
 Welcome adventurer! This is my blog, I post some stuff here. 
-Not sure about what you will find here... Have fun! 
+Not sure about what you will find... Have fun! 
