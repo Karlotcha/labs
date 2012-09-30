@@ -59,8 +59,8 @@ Point.prototype.move 	= function () {
 
 	// this.svg.attr("transform", function(d) { return "translate(" + (elapsed/v)%l + ")"; })
 	
-	this.x = this.x0 + Math.pow(Math.cos(t), 3)*this.coeff + Math.pow(Math.sin(t), 5)*this.coeff*this.coeff2
-	this.y = this.y0 + Math.pow(Math.sin(t), 3)*this.coeff + Math.pow(Math.cos(t), 5)*this.coeff*this.coeff2
+	this.x = this.x0 + Math.pow(Math.cos(t), 3)*this.coeff + Math.pow(Math.sin(t), 7)*this.coeff*this.coeff2
+	this.y = this.y0 + Math.pow(Math.sin(t), 3)*this.coeff + Math.pow(Math.cos(t), 7)*this.coeff*this.coeff2
 	
 	this.svg.attr('cx', this.x)
 	this.svg.attr('cy', this.y)
@@ -94,11 +94,12 @@ var main_svg 	= d3.select("body").append("svg:svg")
 // ************************************************************************************
 
 setInterval(function() {
-	i++
-	if (i<300) new Point(600, 400)
+	if (i<400) {
+		new Point(600, 400)
+		i++
+	}
 	Point.list.forEach(function(thiz, i){thiz.move()})
 }, 1);
-
 
 
 		</script>

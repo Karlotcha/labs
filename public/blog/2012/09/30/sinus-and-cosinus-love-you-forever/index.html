@@ -93,8 +93,10 @@ var main_svg 	= d3.select("body").append("svg:svg")
 // ************************************************************************************
 
 setInterval(function() {
-	i++
-	if (i<500) new Point(600, 400)
+	if (i<500) {
+		i++
+		new Point(600, 400)
+	}
 	Point.list.forEach(function(thiz, i){thiz.move()})
 }, 10);
 
