@@ -4,7 +4,7 @@
   <title><![CDATA[Karlo's labs]]></title>
   <link href="http://karlotcha.herokuapp.com//atom.xml" rel="self"/>
   <link href="http://karlotcha.herokuapp.com//"/>
-  <updated>2012-09-30T03:00:51+01:00</updated>
+  <updated>2012-09-30T03:04:19+01:00</updated>
   <id>http://karlotcha.herokuapp.com//</id>
   <author>
     <name><![CDATA[Karlotcha Hoa]]></name>
@@ -86,7 +86,7 @@ var main_svg 	= d3.select("body").append("svg:svg")
 // ************************************************************************************
 
 setInterval(function() {
-	if (i<250) {
+	if (i<200) {
 		new Point(600, 400)
 		new Point(600, 400)
 		new Point(600, 400)
