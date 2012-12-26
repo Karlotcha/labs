@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>particules</title>
+		
+		<!--jQuery-->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>		
+
+		
+		<!--css-->
+		<style type="text/css">
+			body {
+			  background: black;
+			}
+			
+			svg {
+				width: 1000px;
+				height:800px;
+			}
+		</style>
+	<meta http-equiv="x-dns-prefetch-control" content="off"/></head>
+	<body>
+		<!--d3-->
+		<script src="http://d3js.org/d3.v2.js"></script>
+		<!--my scripts-->
+		<script>
+
+		
+<!-- more -->
+// ************************************************************************************
+// GLOBAL VARIABLES
+// ************************************************************************************
+var main_svg 	= d3.select("body").append("svg:svg").on("mousemove", sparking)
+  
+// ************************************************************************************
+// MAIN SCRIPT
+// ************************************************************************************
+
+function sparking() {
+	var m = d3.svg.mouse(this);
+
+	main_svg.append("svg:circle")
+	.attr("cx", m[0])
+	.attr("cy", m[1])
+	.attr("r", 1e-6)
+	.style("stroke", 'red')
+	.style("stroke-opacity", 1)
+	.transition()
+		.duration(2000)
+			.ease(Math.sqrt)
+			.attr("r", 10)
+			.style("stroke", 'blue')
+	.transition()
+		.duration(2000).delay(1500)
+			.style("stroke-opacity", 1e-6)
+			.remove();
+}
+
+
+		</script>
+	</body>
+</html>
