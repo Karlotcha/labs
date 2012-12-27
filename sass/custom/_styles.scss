@@ -27,6 +27,14 @@ html {
 		margin: 10px;
 		-webkit-border-radius: 5px;
 		border-radius: 5px;
+		
+		#blog-archives h2 {
+			float: none;
+		}
+		
+		#blog-archives time {
+			top: 0px;
+		}
 	}
 	
 	#content .blog-index article h1 a:hover {
@@ -34,3 +42,4 @@ html {
 		text-decoration:   none;
 	}
 }
+
