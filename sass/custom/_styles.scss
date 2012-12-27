@@ -16,6 +16,11 @@ html {
 		background: #F7F7F7;
 	}
 	
+	
+	#content .blog-index article {
+		padding-top: 0;
+	}
+	
 	article {
 		background: #F7F7F7;
 		padding: 10px;
@@ -23,5 +28,9 @@ html {
 		-webkit-border-radius: 5px;
 		border-radius: 5px;
 	}
-
+	
+	#content .blog-index article h1 a:hover {
+		color: #296B73;
+		text-decoration:   none;
+	}
 }
