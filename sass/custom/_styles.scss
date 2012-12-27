@@ -11,9 +11,17 @@ html {
 
 #main {
 	background: image-url('wash-white-30.png')
-}
 
-#main .sidebar {
-	background: #F7F7F7;
-}
+	.sidebar {
+		background: #F7F7F7;
+	}
+	
+	article {
+		background: #F7F7F7;
+		padding: 10px;
+		margin: 10px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+	}
 
+}
