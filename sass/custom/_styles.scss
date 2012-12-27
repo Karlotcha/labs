@@ -28,6 +28,11 @@ html {
 		-webkit-border-radius: 5px;
 		border-radius: 5px;
 		
+		h1 {
+			line-height: 0em;
+			font-size: 1.5em;
+		}
+		
 		#blog-archives h2 {
 			float: none;
 		}
