@@ -28,11 +28,6 @@ html {
 		-webkit-border-radius: 5px;
 		border-radius: 5px;
 		
-		#content .blog-index article h1 {
-			line-height: 0em;
-			font-size: 1.8em;
-		}
-		
 		#blog-archives h2 {
 			float: none;
 		}
@@ -46,5 +41,10 @@ html {
 		color: #296B73;
 		text-decoration:   none;
 	}
-}
 
+#content .blog-index article h1 {
+	line-height: 0em;
+	font-size: 1.8em;
+}
+		
+}
