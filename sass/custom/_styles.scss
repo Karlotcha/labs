@@ -5,10 +5,6 @@ html {
 	background: $page-bg image-url('blackmamba/blackmamba.png') top left;
 }
 
-.sidebar {
-	background: #F7F7F7;
-}
-
 #content {
 	background: none;
 }
@@ -16,3 +12,8 @@ html {
 #main {
 	background: image-url('wash-white-30.png')
 }
+
+.sidebar {
+	background: #F7F7F7;
+}
+
