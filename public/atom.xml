@@ -4,7 +4,7 @@
   <title><![CDATA[Karlo's labs]]></title>
   <link href="http://karlotcha.herokuapp.com//atom.xml" rel="self"/>
   <link href="http://karlotcha.herokuapp.com//"/>
-  <updated>2012-12-27T23:43:36+01:00</updated>
+  <updated>2013-01-04T01:22:57+00:00</updated>
   <id>http://karlotcha.herokuapp.com//</id>
   <author>
     <name><![CDATA[Karlotcha Hoa]]></name>
@@ -14,9 +14,168 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Mondrian generator]]></title>
+    <link href="http://karlotcha.herokuapp.com//blog/2013/01/04/mondrian-generator/"/>
+    <updated>2013-01-04T01:21:00+00:00</updated>
+    <id>http://karlotcha.herokuapp.com//blog/2013/01/04/mondrian-generator</id>
+    <content type="html"><![CDATA[<!-- more -->
+// ************************************************************************************
+// FUNCTIONS HELPERS
+// ************************************************************************************
+var rand = function (n) {
+		return Math.floor(Math.random()*n)
+    }
+	
+// ************************************************************************************
+// GLOBAL VARIABLES
+// ************************************************************************************
+var main_svg 	= d3.select("body").append("svg:svg")
+
+// ************************************************************************************
+// algorithm used to generate the mapping, absolute messy code, don't look at it, PLEASE 
+// ************************************************************************************
+  , Cell 		= function(){
+		this.used  = false		
+  }
+  , Rect		= function(x, y, w, h){
+		this.x 		= x
+		this.y 		= y
+		this.width  = w
+		this.height = h
+		Rect.list.push(this)
+  }
+
+Cell.matrix	= []
+Rect.list =[]
+  
+!function(){
+	for(var i=0; i<10; i++) {
+		Cell.matrix[i] = []
+		for(var j=0; j<10; j++) {
+			Cell.matrix[i][j] = new Cell()
+		}
+	}
+	
+	for(var i=0; i<10; i++) {
+		for(var j=0; j<10; j++) {
+			if(!Cell.matrix[i][j].used) {
+				Cell.matrix[i][j].used = true
+				var w = 1
+				  , h = 1
+				  
+				while(true) {
+					var r = rand(2)
+					if(r) break
+					else {
+						if(Cell.matrix[i][j+w] && !Cell.matrix[i][j+w].used){
+							Cell.matrix[i][j+w].used = true
+							w ++
+						}
+					}
+				}
+				
+				while(true) {
+					r = rand(2)
+					if(r) break
+					else {
+						if(Cell.matrix[i+h]){
+							for (var k =0; k<w; k++) Cell.matrix[i+h][j+k].used = true
+							h ++
+						}
+					}
+				}
+				
+				new Rect(40*j+10, 40*i+10, 40*w-20, 40*h-20)
+			}
+		}
+	}
+	
+	
+}();
+
+  
+// ************************************************************************************
+// generate rectangle
+// ************************************************************************************
+function generate(x, y, width, height) {
+	var rect = main_svg.append("svg:rect")
+			.attr('x', x)
+			.attr('y', y)
+			.attr('width'  , width)
+			.attr('height' , height)
+			.attr('fill' , 'white')
+			.style("opacity", 0)
+
+	  , c = rand(28)
+	  , color = ''
+	if (c == 0) 	 color = 'black'
+	else if (c == 1) color = 'red'
+	else if (c == 2) color = 'blue'
+	else if (c == 3) color = 'yellow'
+	else 			 color = 'white'
+	
+	rect.transition()
+			.delay(2000)
+			.duration(2000)
+			.ease(Math.sqrt)
+				.style("opacity", 1)
+		.transition()
+			.delay(3000)
+			.duration(2000)
+			.ease(Math.sqrt)
+				.attr('fill' , color)
+	
+	main_svg.append("svg:rect")
+		.attr('x', x-10)
+		.attr('y', y-10)
+		.attr('fill' , 'black')
+		.attr('height' , 10)
+		.transition()
+		.duration(1000)
+			.attr('width'  , width + 20)
+	main_svg.append("svg:rect")
+		.attr('x', x + width)
+		.attr('y', y)
+		.attr('fill' , 'black')
+		.attr('width'  , 10)
+		.transition()
+		.duration(1000)
+		.delay(1000)
+			.attr('height' , height + 10)
+	main_svg.append("svg:rect")
+		.attr('x', x -10)
+		.attr('y', y)
+		.attr('width'  , 10)
+		.attr('fill' , 'black')
+		.transition()
+		.duration(1000)
+			.attr('height' , height + 10)
+	main_svg.append("svg:rect")
+		.attr('x', x)
+		.attr('y', y + height)
+		.attr('height' , 10)
+		.attr('fill' , 'black')
+		.transition()
+		.duration(1000)	
+		.delay(1000)
+			.attr('width'  , width)
+	
+}
+
+// ************************************************************************************
+// MAIN SCRIPT
+// ************************************************************************************
+$('body').css('background', 'grey')
+
+Rect.list.forEach(function(e){
+	generate(e.x, e.y, e.width, e.height)
+})]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[spark (2)]]></title>
     <link href="http://karlotcha.herokuapp.com//blog/2012/12/27/spark-2/"/>
-    <updated>2012-12-27T13:49:00+01:00</updated>
+    <updated>2012-12-27T13:49:00+00:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2012/12/27/spark-2</id>
     <content type="html"><![CDATA[<!-- more -->
 // ************************************************************************************
@@ -66,7 +225,7 @@ setInterval(function() {
   <entry>
     <title type="html"><![CDATA['circling' mouse]]></title>
     <link href="http://karlotcha.herokuapp.com//blog/2012/12/27/circling-mouse/"/>
-    <updated>2012-12-27T00:54:00+01:00</updated>
+    <updated>2012-12-27T00:54:00+00:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2012/12/27/circling-mouse</id>
     <content type="html"><![CDATA[<!-- more -->
 // ************************************************************************************
@@ -102,7 +261,7 @@ function sparking() {
   <entry>
     <title type="html"><![CDATA[player: prototype]]></title>
     <link href="http://karlotcha.herokuapp.com//blog/2012/12/12/player-prototype/"/>
-    <updated>2012-12-12T00:39:00+01:00</updated>
+    <updated>2012-12-12T00:39:00+00:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2012/12/12/player-prototype</id>
     <content type="html"><![CDATA[<!-- more -->
 // use the arrow keys to move!
@@ -187,7 +346,7 @@ setInterval(function() {
   <entry>
     <title type="html"><![CDATA[sparking mouse]]></title>
     <link href="http://karlotcha.herokuapp.com//blog/2012/12/04/sparking-mouse/"/>
-    <updated>2012-12-04T23:49:00+01:00</updated>
+    <updated>2012-12-04T23:49:00+00:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2012/12/04/sparking-mouse</id>
     <content type="html"><![CDATA[<!-- more -->
 
@@ -306,7 +465,7 @@ setInterval(function() {
   <entry>
     <title type="html"><![CDATA[spark]]></title>
     <link href="http://karlotcha.herokuapp.com//blog/2012/11/28/spark/"/>
-    <updated>2012-11-28T18:45:00+01:00</updated>
+    <updated>2012-11-28T18:45:00+00:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2012/11/28/spark</id>
     <content type="html"><![CDATA[<!-- more -->
 
@@ -394,7 +553,7 @@ setInterval(function() {
   <entry>
     <title type="html"><![CDATA[symetria]]></title>
     <link href="http://karlotcha.herokuapp.com//blog/2012/09/30/symetria/"/>
-    <updated>2012-09-30T03:22:00+02:00</updated>
+    <updated>2012-09-30T03:22:00+01:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2012/09/30/symetria</id>
     <content type="html"><![CDATA[<!-- more -->
 
@@ -491,7 +650,7 @@ setInterval(function() {
   <entry>
     <title type="html"><![CDATA[parametric 3D]]></title>
     <link href="http://karlotcha.herokuapp.com//blog/2012/09/30/parametric-3d/"/>
-    <updated>2012-09-30T02:59:00+02:00</updated>
+    <updated>2012-09-30T02:59:00+01:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2012/09/30/parametric-3d</id>
     <content type="html"><![CDATA[<!-- more -->
 
@@ -577,7 +736,7 @@ setInterval(function() {
   <entry>
     <title type="html"><![CDATA[let's randomize them all!]]></title>
     <link href="http://karlotcha.herokuapp.com//blog/2012/09/30/lets-randomize-them-all/"/>
-    <updated>2012-09-30T02:34:00+02:00</updated>
+    <updated>2012-09-30T02:34:00+01:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2012/09/30/lets-randomize-them-all</id>
     <content type="html"><![CDATA[<!-- more -->
 
@@ -657,7 +816,7 @@ setInterval(function() {
   <entry>
     <title type="html"><![CDATA[sinus and cosinus love you forever]]></title>
     <link href="http://karlotcha.herokuapp.com//blog/2012/09/30/sinus-and-cosinus-love-you-forever/"/>
-    <updated>2012-09-30T02:22:00+02:00</updated>
+    <updated>2012-09-30T02:22:00+01:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2012/09/30/sinus-and-cosinus-love-you-forever</id>
     <content type="html"><![CDATA[<!-- more -->
 
@@ -737,7 +896,7 @@ setInterval(function() {
   <entry>
     <title type="html"><![CDATA[sinus slick]]></title>
     <link href="http://karlotcha.herokuapp.com//blog/2012/09/30/sinus-slick/"/>
-    <updated>2012-09-30T00:01:00+02:00</updated>
+    <updated>2012-09-30T00:01:00+01:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2012/09/30/sinus-slick</id>
     <content type="html"><![CDATA[<!-- more -->
 
@@ -817,7 +976,7 @@ d3.timer(function() {
   <entry>
     <title type="html"><![CDATA[circles genesis]]></title>
     <link href="http://karlotcha.herokuapp.com//blog/2012/09/30/circles-genesis/"/>
-    <updated>2012-09-30T00:00:00+02:00</updated>
+    <updated>2012-09-30T00:00:00+01:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2012/09/30/circles-genesis</id>
     <content type="html"><![CDATA[<!-- more -->
 
@@ -898,7 +1057,7 @@ d3.timer(function() {
   <entry>
     <title type="html"><![CDATA[let's add other directions!]]></title>
     <link href="http://karlotcha.herokuapp.com//blog/2012/09/27/lets-add-other-directions/"/>
-    <updated>2012-09-27T00:01:00+02:00</updated>
+    <updated>2012-09-27T00:01:00+01:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2012/09/27/lets-add-other-directions</id>
     <content type="html"><![CDATA[<!-- more -->
 
@@ -1007,7 +1166,7 @@ d3.timer(function() {
   <entry>
     <title type="html"><![CDATA[my very first particules]]></title>
     <link href="http://karlotcha.herokuapp.com//blog/2012/09/25/my-very-first-particules/"/>
-    <updated>2012-09-25T22:11:00+02:00</updated>
+    <updated>2012-09-25T22:11:00+01:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2012/09/25/my-very-first-particules</id>
     <content type="html"><![CDATA[<!-- more -->
 
@@ -1086,7 +1245,7 @@ d3.timer(function() {
   <entry>
     <title type="html"><![CDATA[Welcome!]]></title>
     <link href="http://karlotcha.herokuapp.com//blog/2012/09/21/welcome/"/>
-    <updated>2012-09-21T22:16:00+02:00</updated>
+    <updated>2012-09-21T22:16:00+01:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2012/09/21/welcome</id>
     <content type="html"><![CDATA[<p>Welcome adventurer! This is my blog, I post some stuff here.
 Not sure about what you will find... Have fun!</p>
