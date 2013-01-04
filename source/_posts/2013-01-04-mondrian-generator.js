@@ -9,7 +9,8 @@ categories:
 Press any key to generate again
 
 <!-- more -->
-function generate(){
+
+function generate_Mondrian(){
 	// ************************************************************************************
 	// FUNCTIONS HELPERS
 	// ************************************************************************************
@@ -163,10 +164,10 @@ function generate(){
 	})
 }
    
-generate()
+generate_Mondrian()
 
 // press any key to generate again
 $(document).live('keydown', function(){
 	d3.select("svg").remove()
-	generate()
+	generate_Mondrian()
 })

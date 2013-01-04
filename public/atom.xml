@@ -4,7 +4,7 @@
   <title><![CDATA[Karlo's labs]]></title>
   <link href="http://karlotcha.herokuapp.com//atom.xml" rel="self"/>
   <link href="http://karlotcha.herokuapp.com//"/>
-  <updated>2013-01-04T12:13:24+00:00</updated>
+  <updated>2013-01-04T12:20:14+00:00</updated>
   <id>http://karlotcha.herokuapp.com//</id>
   <author>
     <name><![CDATA[Karlotcha Hoa]]></name>
@@ -21,7 +21,8 @@
     <content type="html"><![CDATA[Press any key to generate again
 
 <!-- more -->
-function generate(){
+
+function generate_Mondrian(){
 	// ************************************************************************************
 	// FUNCTIONS HELPERS
 	// ************************************************************************************
@@ -175,12 +176,12 @@ function generate(){
 	})
 }
    
-generate()
+generate_Mondrian()
 
 // press any key to generate again
 $(document).live('keydown', function(){
 	d3.select("svg").remove()
-	generate()
+	generate_Mondrian()
 })]]></content>
   </entry>
   
