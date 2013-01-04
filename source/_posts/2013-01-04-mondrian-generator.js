@@ -6,8 +6,6 @@ comments: true
 categories: 
 ---
 
-Press any key to generate again
-
 <!-- more -->
 
 function generate_Mondrian(){

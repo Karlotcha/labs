@@ -4,7 +4,7 @@
   <title><![CDATA[Karlo's labs]]></title>
   <link href="http://karlotcha.herokuapp.com//atom.xml" rel="self"/>
   <link href="http://karlotcha.herokuapp.com//"/>
-  <updated>2013-01-04T12:31:16+00:00</updated>
+  <updated>2013-01-04T12:36:34+00:00</updated>
   <id>http://karlotcha.herokuapp.com//</id>
   <author>
     <name><![CDATA[Karlotcha Hoa]]></name>
@@ -18,9 +18,7 @@
     <link href="http://karlotcha.herokuapp.com//blog/2013/01/04/mondrian-generator/"/>
     <updated>2013-01-04T01:21:00+00:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2013/01/04/mondrian-generator</id>
-    <content type="html"><![CDATA[Press any key to generate again
-
-<!-- more -->
+    <content type="html"><![CDATA[<!-- more -->
 
 function generate_Mondrian(){
 	// ************************************************************************************
