@@ -6,7 +6,7 @@ comments: true
 categories: 
 ---
 
-Press any key to generate again
+// Press any key to generate again
 
 <!-- more -->
 

@@ -6,7 +6,7 @@ comments: true
 categories: 
 ---
 
-Use the arrow keys to move!
+// Use the arrow keys to move!
 
 <!-- more -->
 
