@@ -44,7 +44,9 @@ function generate_Mondrian(){
 	// ************************************************************************************
 	// GLOBAL VARIABLES
 	// ************************************************************************************
-	var main_svg 	= d3.select("body").append("svg:svg")
+	var main_svg 	  = d3.select("body").append("svg:svg")
+	  , border		  = 5
+	  , smallest_rect = 50
 
 	// ************************************************************************************
 	// algorithm used to generate the mapping, absolute messy code, don't look at it, PLEASE 
@@ -100,7 +102,14 @@ function generate_Mondrian(){
 						}
 					}
 					
-					new Rect(40*j+10, 40*i+10, 40*w-20, 40*h-20)
+					var rect_total = smallest_rect + 2*border
+					  , x 		   = rect_total*j + border
+					  , y		   = rect_total*i + border
+					  , width	   = rect_total*w - 2*border
+					  , height	   = rect_total*h - 2*border
+						
+					
+					new Rect(x, y, width, height)
 				}
 			}
 		}
@@ -141,34 +150,34 @@ function generate_Mondrian(){
 					.attr('fill' , color)
 		
 		main_svg.append("svg:rect")
-			.attr('x', x-10)
-			.attr('y', y-10)
+			.attr('x', x-border)
+			.attr('y', y-border)
 			.attr('fill' , 'black')
-			.attr('height' , 10)
+			.attr('height' , border)
 			.transition()
 			.duration(1000)
-				.attr('width'  , width + 20)
+				.attr('width'  , width + 2*border)
 		main_svg.append("svg:rect")
 			.attr('x', x + width)
 			.attr('y', y)
 			.attr('fill' , 'black')
-			.attr('width'  , 10)
+			.attr('width'  , border)
 			.transition()
 			.duration(1000)
 			.delay(1000)
-				.attr('height' , height + 10)
+				.attr('height' , height + border)
 		main_svg.append("svg:rect")
-			.attr('x', x -10)
+			.attr('x', x -border)
 			.attr('y', y)
-			.attr('width'  , 10)
+			.attr('width'  , border)
 			.attr('fill' , 'black')
 			.transition()
 			.duration(1000)
-				.attr('height' , height + 10)
+				.attr('height' , height + border)
 		main_svg.append("svg:rect")
 			.attr('x', x)
 			.attr('y', y + height)
-			.attr('height' , 10)
+			.attr('height' , border)
 			.attr('fill' , 'black')
 			.transition()
 			.duration(1000)	
