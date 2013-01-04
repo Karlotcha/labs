@@ -6,8 +6,9 @@ comments: true
 categories: 
 ---
 
+Use the arrow keys to move!
+
 <!-- more -->
-// use the arrow keys to move!
 
 // ************************************************************************************
 // PLAYER CLASS
