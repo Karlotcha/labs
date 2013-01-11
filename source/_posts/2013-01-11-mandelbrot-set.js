@@ -100,7 +100,7 @@ function generate() {
 // ************************************************************************************
 // ZOOM
 // ************************************************************************************
-var X0, Y0
+var X0, Y0, dif
 
 $('svg')
 	.live('mousedown', function(e0){
@@ -119,7 +119,8 @@ $('svg')
 			  , Y	 = e.pageY
 			  , difX = X-X0
 			  , difY = Y-Y0
-			  , dif  = Math.max(Math.abs(difX), Math.abs(difY))
+			
+			dif  = Math.max(Math.abs(difX), Math.abs(difY))
 
 			if (difX>0 && difY>0) $rect.css('left', X0).width(dif).css('top', Y0).height(dif)
 		})
@@ -133,9 +134,9 @@ var zoom = function(e1){
 				
 				var offset = $('svg').offset()
 				  , x_min_pix = X0 - offset.left
-				  , x_max_pix = X1 - offset.left
+				  , x_max_pix = x_min_pix + dif
 				  , y_min_pix = Y0 - offset.top
-				  , y_max_pix = X1 - offset.top
+				  , y_max_pix = y_min_pix + dif
 				  , x_conv	  = d3.scale.linear().domain([0, width]).range([x_min, x_max])
 				  , y_conv	  = d3.scale.linear().domain([0, height]).range([y_min, y_max])
 				  , x_min_true	= x_conv(x_min_pix)
