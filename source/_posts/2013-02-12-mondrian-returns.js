@@ -19,7 +19,10 @@ function generate_Mondrian(size, white_p, black_p, normal_p, normal_propa_p, hor
 	// ************************************************************************************
 	// VARIABLES
 	// ************************************************************************************
-	var main_svg 	  = d3.select("body").append("svg:svg")
+	var main_svg = d3.select(".svg").append("svg:svg")
+	  , WHITE    = '#E1E1DA'
+	  , colors1	 = ['#D1DAC2', '#BBBFAA', '#AFAEA7', '#E2C903', '#1525B1', '#B40B01']
+	  , colors2	 = ['#B6AD6C', '#DCC50C', '#C2AA66', '#790606', '#1F29B6', '#080A1B']
 
 	// ************************************************************************************
 	// algorithm used to generate the mapping
@@ -141,19 +144,24 @@ function generate_Mondrian(size, white_p, black_p, normal_p, normal_propa_p, hor
 				.attr('y', y)
 				.attr('width'  , width)
 				.attr('height' , height)
-				.attr('fill' , 'white')
+				.attr('fill' , WHITE)
 				.style("opacity", 0)
 		  , color = ''
-
-		if ((white_p < rand(100)) || (type!='normal')) {
+		
+		if (type == 'normal') {
+			if ((white_p < rand(100))) {
+				if (black_p < rand(100)) {
+					color = colors1[rand(6)]
+				} else color = 'black'
+			} else color = WHITE
+		}
+		
+		if (type != 'normal') {
 			if (black_p < rand(100)) {
-				c = rand(3)
-				if (c == 0) color = 'red'
-				else if (c == 1) color = 'blue'
-				else if (c == 2) color = 'yellow'
+				color = colors2[rand(6)]
 			} else color = 'black'
-		} else color = 'white'
-			
+		}
+		
 		rect.transition()
 				.duration(1000)
 				.ease(Math.sqrt)
