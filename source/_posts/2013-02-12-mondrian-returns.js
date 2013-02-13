@@ -8,14 +8,7 @@ categories:
 
 <!-- more -->
 
-function generate_Mondrian(size, white_p, black_p, normal_p, normal_propa_p, horiz_p, horiz_propa_p, verti_p, verti_propa_p){
-	// ************************************************************************************
-	// FUNCTIONS HELPERS
-	// ************************************************************************************
-	var rand = function (n) {
-			return Math.floor(Math.random()*n)
-		}
-		
+function generate_Mondrian(){
 	// ************************************************************************************
 	// VARIABLES
 	// ************************************************************************************
@@ -23,14 +16,31 @@ function generate_Mondrian(size, white_p, black_p, normal_p, normal_propa_p, hor
 	  , WHITE    = '#F4EEE0'
 	  , colors1	 = ['#D1DAC2', '#BBBFAA', '#AFAEA7', '#E2C903', '#1525B1', '#B40B01']
 	  , colors2	 = ['#B6AD6C', '#DCC50C', '#C2AA66', '#790606', '#1F29B6', '#080A1B']
+	  , size		  = 6
+	  , total_size	  = 600
+	  , white_p		  = 50
+	  , black_p 	  = 10
+	  , normal_propa_p= 95
+	  , horiz_p 	  = 2
+	  , horiz_propa_p = 99
+	  , verti_p 	  = 2
+	  , verti_propa_p = 97
+	  
+	// ************************************************************************************
+	// FUNCTIONS HELPERS
+	// ************************************************************************************
+	var rand = function (n) {
+			return Math.floor(Math.random()*n)
+		}
+		
 
 	// ************************************************************************************
 	// algorithm used to generate the mapping
 	// ************************************************************************************
-	  , Cell 		= function(){
+	  , Cell = function(){
 			this.used  = false		
 	  }
-	  , Rect		= function(x, y, w, h, t){
+	  , Rect = function(x, y, w, h, t){
 			this.x 		= x
 			this.y 		= y
 			this.width  = w
@@ -41,7 +51,7 @@ function generate_Mondrian(size, white_p, black_p, normal_p, normal_propa_p, hor
 
 	Cell.matrix	= []
 	Rect.list 	= []
-	matrix_size = Math.floor(600/size)
+	matrix_size = Math.floor(total_size/size)
 	  
 	!function(){
 		for(var i=0; i<matrix_size; i++) {
@@ -52,85 +62,91 @@ function generate_Mondrian(size, white_p, black_p, normal_p, normal_propa_p, hor
 		}
 		
 		function horiz_propa(){
+			var w = 1
+			  , h = 1
+			if(j==20) var horiz_p = 15
 			if(Cell.matrix[i+1]) h=2
-
-			while(true) {
-				new Rect(size*(j+w-1), size*(i), size, size*h, 'horiz')
-				if(horiz_propa_p < rand(100)) break
-				else {
-					if(Cell.matrix[i][j+w]){
-						Cell.matrix[i][j+w].used 	 = true
-						Cell.matrix[i+h-1][j+w].used = true
-						w ++
-					} else break
+			
+			if (horiz_p > rand(100)) {
+				Cell.matrix[i][j].used     = true
+				Cell.matrix[i+h-1][j].used = true
+				loop:
+				while(true) {
+					new Rect(size*(j+w-1), size*(i), size, size*h, 'horiz')
+					if(false) break loop
+					else {
+						if(Cell.matrix[i][j+w]){
+							Cell.matrix[i][j+w].used 	 = true
+							Cell.matrix[i+h-1][j+w].used = true
+							w ++
+						} else break loop
+					}
 				}
 			}
 		}
 		
 		function verti_propa(){
+			var w = 1
+			  , h = 1
+			if(i==0) var verti_p = 7
 			if(Cell.matrix[i][j+1]) w=2
 			
-			while(true) {
-				new Rect(size*(j), size*(i+h-1), size*w, size, 'verti')
-				if(verti_propa_p < rand(100)) break
-				else {
-					if(Cell.matrix[i+h]){
-						Cell.matrix[i+h][j].used 	 = true
-						Cell.matrix[i+h][j+w-1].used = true
-						h ++
-					} else break
+			if	(verti_p > rand(100)) {
+				Cell.matrix[i][j].used     = true
+				Cell.matrix[i][j+w-1].used = true
+				while(true) {
+					if(verti_propa_p < rand(100)) break
+					else {
+						if(Cell.matrix[i+h]){
+							new Rect(size*(j), size*(i+h-1), size*w, size, 'verti')
+							Cell.matrix[i+h][j].used 	 = true
+							Cell.matrix[i+h][j+w-1].used = true
+							h ++
+						} else break
+					}
 				}
 			}
 		}
 		
 		function normal_propa(){
-			while(true) {
-				if(normal_propa_p < rand(100)) break
-				else {
-					if(Cell.matrix[i][j+w] && !Cell.matrix[i][j+w].used){
-						Cell.matrix[i][j+w].used = true
-						w ++
-					}
-				}
-			}
-			
-			while(true) {
-				if(normal_propa_p < rand(100)) break
-				else {
-					if(Cell.matrix[i+h]){
-						for (var k =0; k<w; k++) Cell.matrix[i+h][j+k].used = true
-						h ++
-					}
-				}
-			}
+			if(!Cell.matrix[i][j].used) {
+				Cell.matrix[i][j].used = true
+				var w = 1
+				  , h = 1
 				
-			new Rect(size*j, size*i, size*w, size*h, 'normal')
-		}
-		
-		for(var i=0; i<matrix_size; i++) {
-			for(var j=0; j<matrix_size; j++) {
-				if(!Cell.matrix[i][j].used) {
-					Cell.matrix[i][j].used = true
-					var w = 1
-					  , h = 1
-					  , type
-					
-					if (rand(2)==0) {
-						if	    (normal_p> rand(100)) normal_propa()
-						else if	(verti_p > rand(100)) verti_propa()
-						else if (horiz_p > rand(100)) horiz_propa()
-						else						  normal_propa()
-					} else {
-						if	    (normal_p> rand(100)) verti_propa()
-						else if	(horiz_p > rand(100)) horiz_propa()
-						else if (verti_p > rand(100)) verti_propa()
-						else 						  normal_propa()
+				loop:
+				while(true) {
+					if(normal_propa_p < rand(100)) break loop
+					else {
+						if(Cell.matrix[i][j+w] && !Cell.matrix[i][j+w].used){
+							Cell.matrix[i][j+w].used = true
+							w ++
+						} else break loop
 					}
 				}
+				
+				loop:
+				while(true) {
+					if(normal_propa_p < rand(100)) break loop
+					else {
+						if(Cell.matrix[i+h]) {
+							for (var k =0; k<w; k++)
+								if(Cell.matrix[i+h][j+k].used)
+									break loop
+							 
+							for (var k =0; k<w; k++) Cell.matrix[i+h][j+k].used = true
+							h ++
+						} else break loop
+					}
+				}
+				
+				new Rect(size*j, size*i, size*w, size*h, 'normal')
 			}
 		}
-		
-		
+
+		for(var i=0; i<matrix_size; i++) for(var j=0; j<matrix_size; j++) horiz_propa()
+		for(var i=0; i<matrix_size; i++) for(var j=0; j<matrix_size; j++) verti_propa()
+		for(var i=0; i<matrix_size; i++) for(var j=0; j<matrix_size; j++) normal_propa()
 	}()
 
 	  
@@ -147,7 +163,6 @@ function generate_Mondrian(size, white_p, black_p, normal_p, normal_propa_p, hor
 				.attr('fill' , WHITE)
 				.style("opacity", 0)
 		  , color = ''
-		
 		if (type == 'normal') {
 			if ((white_p < rand(100))) {
 				if (black_p < rand(100)) {
@@ -180,37 +195,31 @@ function generate_Mondrian(size, white_p, black_p, normal_p, normal_propa_p, hor
 	Rect.list.forEach(function(e){
 		draw(e.x, e.y, e.width, e.height, e.type)
 	})
+	
+	L = String(total_size) + ' '
+	l = String(total_size/2) + ' '
+	O = '0' + ' '
+	
 	main_svg.append("svg:polygon")
-			.attr('points', '0 0 0 300 300 0')
+			.attr('points', O + O + O + l + l + O)
 			.attr('fill' , 'white')
 	main_svg.append("svg:polygon")
-			.attr('points', '0 300 0 600 300 600')
+			.attr('points', O + l + O + L + l + L)
 			.attr('fill' , 'white')
 	main_svg.append("svg:polygon")
-			.attr('points', '300 0 600 0 600 300')
+			.attr('points', l + O + L + O + L + l)
 			.attr('fill' , 'white')
 	main_svg.append("svg:polygon")
-			.attr('points', '600 300 300 600 600 600')
+			.attr('points', L + l + l + L + L + L)
 			.attr('fill' , 'white')
 
 }
 
-// variables from controller
-var size		  = 10
-  , white_p		  = 50
-  , black_p 	  = 10
-  , normal_p 	  = 60
-  , normal_propa_p= 80  
-  , horiz_p 	  = 5
-  , horiz_propa_p = 95
-  , verti_p 	  = 5
-  , verti_propa_p = 70
-
-generate_Mondrian(size, white_p, black_p, normal_p, normal_propa_p, horiz_p, horiz_propa_p, verti_p, verti_propa_p)
+generate_Mondrian()
 
 // press any key to generate again
 $(document).live('keydown', function(){
 	d3.select("svg").remove()
-	generate_Mondrian(size, white_p, black_p, normal_p, normal_propa_p, horiz_p, horiz_propa_p, verti_p, verti_propa_p)
+	generate_Mondrian()
 
 })
