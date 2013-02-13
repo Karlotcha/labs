@@ -207,3 +207,10 @@ var size		  = 10
   , verti_propa_p = 70
 
 generate_Mondrian(size, white_p, black_p, normal_p, normal_propa_p, horiz_p, horiz_propa_p, verti_p, verti_propa_p)
+
+// press any key to generate again
+$(document).live('keydown', function(){
+	d3.select("svg").remove()
+	generate_Mondrian(size, white_p, black_p, normal_p, normal_propa_p, horiz_p, horiz_propa_p, verti_p, verti_propa_p)
+
+})

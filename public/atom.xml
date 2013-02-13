@@ -4,7 +4,7 @@
   <title><![CDATA[Karlo's labs]]></title>
   <link href="http://karlotcha.herokuapp.com//atom.xml" rel="self"/>
   <link href="http://karlotcha.herokuapp.com//"/>
-  <updated>2013-02-13T00:02:20+00:00</updated>
+  <updated>2013-02-13T00:07:18+00:00</updated>
   <id>http://karlotcha.herokuapp.com//</id>
   <author>
     <name><![CDATA[Karlotcha Hoa]]></name>
@@ -218,7 +218,14 @@ var size		  = 10
   , verti_p 	  = 5
   , verti_propa_p = 70
 
-generate_Mondrian(size, white_p, black_p, normal_p, normal_propa_p, horiz_p, horiz_propa_p, verti_p, verti_propa_p)]]></content>
+generate_Mondrian(size, white_p, black_p, normal_p, normal_propa_p, horiz_p, horiz_propa_p, verti_p, verti_propa_p)
+
+// press any key to generate again
+$(document).live('keydown', function(){
+	d3.select("svg").remove()
+	generate_Mondrian(size, white_p, black_p, normal_p, normal_propa_p, horiz_p, horiz_propa_p, verti_p, verti_propa_p)
+
+})]]></content>
   </entry>
   
   <entry>
