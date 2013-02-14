@@ -41,13 +41,8 @@ function generate_Mondrian(){
 	  , colors2	 = ['#B6AD6C', '#DCC50C', '#C2AA66', '#790606', '#1F29B6', '#080A1B']
 	  , size		  = 6
 	  , total_size	  = 600
-	  , white_p		  = 50
+	  , white_p		  = 40
 	  , black_p 	  = 10
-	  , normal_propa_p= 95
-	  , horiz_p 	  = 2
-	  , horiz_propa_p = 99
-	  , verti_p 	  = 2
-	  , verti_propa_p = 97
 	  
 	// ************************************************************************************
 	// FUNCTIONS HELPERS
@@ -84,20 +79,32 @@ function generate_Mondrian(){
 			}
 		}
 		
+		var normal_propa_p_h = 90
+		  , normal_propa_p_v = 97
+		  , horiz_p 	  	 = 1
+		  , horiz_p2      	 = 1
+		  , horiz_propa_p 	 = 99
+		  , verti_p 	  	 = 1
+		  , verti_propa_p 	 = 97
+		
 		function horiz_propa(){
 			var w = 1
 			  , h = 1
-			if(j==20) var horiz_p = 15
+			if(j==15) horiz_propa_p = 10000
+			if(j==20) horiz_p2 *= 2
+			
 			if(Cell.matrix[i+1]) h=2
 			
-			if (horiz_p > rand(100)) {
+			if (j>15 && j<25 && horiz_p2>rand(10000) ) {
+				horiz_p2 = 1
 				Cell.matrix[i][j].used     = true
 				Cell.matrix[i+h-1][j].used = true
 				loop:
 				while(true) {
 					new Rect(size*(j+w-1), size*(i), size, size*h, 'horiz')
-					if(false) break loop
+					if(horiz_propa_p < rand(100)) break loop
 					else {
+						if((j+w)==80) horiz_propa_p = 80
 						if(Cell.matrix[i][j+w]){
 							Cell.matrix[i][j+w].used 	 = true
 							Cell.matrix[i+h-1][j+w].used = true
@@ -111,10 +118,10 @@ function generate_Mondrian(){
 		function verti_propa(){
 			var w = 1
 			  , h = 1
-			if(i==0) var verti_p = 7
+
 			if(Cell.matrix[i][j+1]) w=2
 			
-			if	(verti_p > rand(100)) {
+			if	(verti_p > rand(1000)) {
 				Cell.matrix[i][j].used     = true
 				Cell.matrix[i][j+w-1].used = true
 				while(true) {
@@ -139,7 +146,7 @@ function generate_Mondrian(){
 				
 				loop:
 				while(true) {
-					if(normal_propa_p < rand(100)) break loop
+					if(normal_propa_p_h < rand(100)) break loop
 					else {
 						if(Cell.matrix[i][j+w] && !Cell.matrix[i][j+w].used){
 							Cell.matrix[i][j+w].used = true
@@ -150,7 +157,7 @@ function generate_Mondrian(){
 				
 				loop:
 				while(true) {
-					if(normal_propa_p < rand(100)) break loop
+					if(normal_propa_p_v < rand(100)) break loop
 					else {
 						if(Cell.matrix[i+h]) {
 							for (var k =0; k<w; k++)
@@ -164,6 +171,8 @@ function generate_Mondrian(){
 				}
 				
 				new Rect(size*j, size*i, size*w, size*h, 'normal')
+				if (0==rand(3)) 
+					new Rect(size*(j+rand(w)/2), size*(i+rand(h)/2), size*(rand(w)/2+1), size*(rand(h)/2+1), 'normal')
 			}
 		}
 
@@ -186,6 +195,7 @@ function generate_Mondrian(){
 				.attr('fill' , WHITE)
 				.style("opacity", 0)
 		  , color = ''
+		  
 		if (type == 'normal') {
 			if ((white_p < rand(100))) {
 				if (black_p < rand(100)) {
