@@ -7,7 +7,6 @@ categories:
 ---
 
 <!-- more -->
-
 function generate_Mondrian(){
 	// ************************************************************************************
 	// VARIABLES
@@ -188,8 +187,8 @@ function generate_Mondrian(){
 		
 		rect.attr('fill' , color)
 			.transition()
-				.duration(3000)
-				.ease(Math.sqrt)
+				.duration(5000)
+				.ease('cubic-out')
 				.attr('x', x)
 				.attr('y', y)
 

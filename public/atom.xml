@@ -4,7 +4,7 @@
   <title><![CDATA[Karlo's labs]]></title>
   <link href="http://karlotcha.herokuapp.com//atom.xml" rel="self"/>
   <link href="http://karlotcha.herokuapp.com//"/>
-  <updated>2013-02-15T00:03:17+00:00</updated>
+  <updated>2013-02-15T00:28:14+00:00</updated>
   <id>http://karlotcha.herokuapp.com//</id>
   <author>
     <name><![CDATA[Karlotcha Hoa]]></name>
@@ -19,7 +19,6 @@
     <updated>2013-02-12T23:04:00+00:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2013/02/12/mondrian-returns</id>
     <content type="html"><![CDATA[<!-- more -->
-
 function generate_Mondrian(){
 	// ************************************************************************************
 	// VARIABLES
@@ -200,8 +199,8 @@ function generate_Mondrian(){
 		
 		rect.attr('fill' , color)
 			.transition()
-				.duration(3000)
-				.ease(Math.sqrt)
+				.duration(5000)
+				.ease('cubic-out')
 				.attr('x', x)
 				.attr('y', y)
 
