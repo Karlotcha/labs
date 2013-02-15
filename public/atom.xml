@@ -4,7 +4,7 @@
   <title><![CDATA[Karlo's labs]]></title>
   <link href="http://karlotcha.herokuapp.com//atom.xml" rel="self"/>
   <link href="http://karlotcha.herokuapp.com//"/>
-  <updated>2013-02-15T00:38:29+00:00</updated>
+  <updated>2013-02-15T00:41:53+00:00</updated>
   <id>http://karlotcha.herokuapp.com//</id>
   <author>
     <name><![CDATA[Karlotcha Hoa]]></name>
@@ -178,8 +178,8 @@ function generate_Mondrian(){
 		var rect = main_svg.append("svg:rect")
 				.attr('x', rand(600))
 				.attr('y', rand(600))
-				.attr('width'  ,rand(60))
-				.attr('height' , rand(60))
+				.attr('width'  ,60)
+				.attr('height' , 60)
 
 		  , color = ''
 		  
