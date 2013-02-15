@@ -166,8 +166,8 @@ function generate_Mondrian(){
 		var rect = main_svg.append("svg:rect")
 				.attr('x', rand(600))
 				.attr('y', rand(600))
-				.attr('width'  , width)
-				.attr('height' , height)
+				.attr('width'  ,rand(60))
+				.attr('height' , rand(60))
 
 		  , color = ''
 		  
@@ -191,6 +191,8 @@ function generate_Mondrian(){
 				.ease('cubic-out')
 				.attr('x', x)
 				.attr('y', y)
+				.attr('width'  , width)
+				.attr('height' , height)
 
 	}
 
