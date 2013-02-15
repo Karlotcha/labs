@@ -4,7 +4,7 @@
   <title><![CDATA[Karlo's labs]]></title>
   <link href="http://karlotcha.herokuapp.com//atom.xml" rel="self"/>
   <link href="http://karlotcha.herokuapp.com//"/>
-  <updated>2013-02-14T23:34:07+00:00</updated>
+  <updated>2013-02-15T00:03:17+00:00</updated>
   <id>http://karlotcha.herokuapp.com//</id>
   <author>
     <name><![CDATA[Karlotcha Hoa]]></name>
@@ -177,12 +177,11 @@ function generate_Mondrian(){
 	function draw(x, y, width, height, type) {
 	
 		var rect = main_svg.append("svg:rect")
-				.attr('x', x)
-				.attr('y', y)
+				.attr('x', rand(600))
+				.attr('y', rand(600))
 				.attr('width'  , width)
 				.attr('height' , height)
-				.attr('fill' , WHITE)
-				.style("opacity", 0)
+
 		  , color = ''
 		  
 		if (type == 'normal') {
@@ -199,21 +198,21 @@ function generate_Mondrian(){
 			} else color = 'black'
 		}
 		
-		rect.transition()
-				.duration(1000)
-				.ease(Math.sqrt)
-					.style("opacity", 1)
+		rect.attr('fill' , color)
 			.transition()
-				.delay(1000)
-				.duration(1000)
+				.duration(3000)
 				.ease(Math.sqrt)
-					.attr('fill' , color)
+				.attr('x', x)
+				.attr('y', y)
+
 	}
 
 	// ************************************************************************************
 	// MAIN SCRIPT
 	// ************************************************************************************
 	$('body').css('background', 'white')
+	$('svg').css('height', 600)
+	$('svg').css('width', 600)
 	Rect.list.forEach(function(e){
 		draw(e.x, e.y, e.width, e.height, e.type)
 	})
