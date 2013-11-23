@@ -101,8 +101,8 @@ var c   = document.getElementById("canvas")
   , image = ctx.getImageData(0, 0, width, height)
 
 $(window).mousemove(function(e){
-  if (e.offsetX < width) core_x = e.offsetX
-  if (e.offsetY < height) core_y = e.offsetY
+  if (e.pageX < width) core_x = e.pageX
+  if (e.pageY < height) core_y = e.pageY
 })
 
 setInterval(function() {

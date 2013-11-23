@@ -4,7 +4,7 @@
   <title><![CDATA[Karlo's labs]]></title>
   <link href="http://karlotcha.herokuapp.com//atom.xml" rel="self"/>
   <link href="http://karlotcha.herokuapp.com//"/>
-  <updated>2013-11-23T20:22:39+00:00</updated>
+  <updated>2013-11-23T20:35:30+00:00</updated>
   <id>http://karlotcha.herokuapp.com//</id>
   <author>
     <name><![CDATA[Karlotcha Hoa]]></name>
@@ -90,8 +90,8 @@ var c   = document.getElementById("canvas")
   , image = ctx.getImageData(0, 0, width, height)
 
 $(window).mousemove(function(e){
-  if (e.offsetX < width) core_x = e.offsetX
-  if (e.offsetY < height) core_y = e.offsetY
+  if (e.pageX < width) core_x = e.pageX
+  if (e.pageY < height) core_y = e.pageY
 })
 
 setInterval(function() {
