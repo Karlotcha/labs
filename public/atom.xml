@@ -4,7 +4,7 @@
   <title><![CDATA[Karlo's labs]]></title>
   <link href="http://karlotcha.herokuapp.com//atom.xml" rel="self"/>
   <link href="http://karlotcha.herokuapp.com//"/>
-  <updated>2013-11-23T20:15:04+00:00</updated>
+  <updated>2013-11-23T20:22:39+00:00</updated>
   <id>http://karlotcha.herokuapp.com//</id>
   <author>
     <name><![CDATA[Karlotcha Hoa]]></name>
@@ -19,6 +19,10 @@
     <updated>2013-11-23T20:13:00+00:00</updated>
     <id>http://karlotcha.herokuapp.com//blog/2013/11/23/sparkling-mouse-2</id>
     <content type="html"><![CDATA[<!-- more -->
+
+$('body').append('<canvas id="canvas" width="1000" height="1000" style="border:1px solid red;"></canvas>')
+
+
 // ************************************************************************************
 // POINT CLASS
 // ************************************************************************************
