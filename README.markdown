@@ -1,3 +1,7 @@
+[Karlo's lab](http://karlotcha.herokuapp.com)
+
+Personal blog powered by Octopress. Mainly a playground to do visual stuff with javascript.
+
 ## What is Octopress?
 
 Octopress is [Jekyll](https://github.com/mojombo/jekyll) blogging at its finest.
